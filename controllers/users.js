@@ -20,13 +20,22 @@ var list = null
 
 exports.index = function(req, res) {
 
-    var sql = "SELECT * FROM USERS";
-
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log(result)
+    con.query("SELECT * FROM USERS", function(err, rows) {
+        if (err)
+            console.log(err)
+        else
+            console.log(rows);
     });
 
     return list
 
+};
+
+exports.test = function(callback) {
+    con.query("SELECT * FROM USERS", function(err, rows) {
+        if (err) {
+            callback(err, null);
+        } else
+            callback(null, rows);
+    });
 };
