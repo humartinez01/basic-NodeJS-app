@@ -7,8 +7,8 @@ var userList = null
 router.get('/', function(req, res, next) {
 
   userList = users.index()
-  
-  res.render('index', { title: 'Express', users: userList });
+
+  res.render('index', { title: 'Express' });
 });
 
 module.exports = router;

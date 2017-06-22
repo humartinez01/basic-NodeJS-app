@@ -20,10 +20,12 @@ var list = null
 
 exports.index = function(req, res) {
 
-    list = [
-        {'key': 'value-01'},
-        {'key': 'value-02'}
-    ]
+    var sql = "SELECT * FROM USERS";
+
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log(result)
+    });
 
     return list
 
