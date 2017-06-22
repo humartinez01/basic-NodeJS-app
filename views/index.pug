@@ -3,6 +3,6 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  p #{hola}
-  script.
-    console.log("Hola mundo desde .pug")
+
+  for result in users
+    p #{result.key}

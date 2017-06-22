@@ -1,12 +1,14 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
+var users = require('../controllers/users')
+var userList = null
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  console.log("Hola mundo desde routes")
+  userList = users.index()
   
-  res.render('index', { title: 'Express', hola: 'Hola mundo' });
+  res.render('index', { title: 'Express', users: userList });
 });
 
 module.exports = router;
