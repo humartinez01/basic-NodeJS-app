@@ -7,14 +7,15 @@
   },
   "dependencies": {
     "body-parser": "~1.17.1",
+    "bookshelf": "^0.10.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "knex": "^0.13.0",
     "morgan": "~1.8.1",
+    "mysql": ">=2.5.0",
     "pg": "^6.1.0",
     "pug": "~2.0.0-beta11",
-    "serve-favicon": "~2.4.2",
-    "mysql": ">=2.5.0"
+    "serve-favicon": "~2.4.2"
   }
 }
-

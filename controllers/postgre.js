@@ -2,17 +2,30 @@
  * Created by frosales on 23/06/2017.
  */
 
-const pg = require('pg');
-const connectionString = 'postgres://postgres:123@localhost:5432/db_postgres';
-const client = new pg.Client(connectionString);
-client.connect();
+var knex = require('knex')({
+    client: 'pg',
+    connection: {
+        host     : 'localhost',
+        user     : 'postgres',
+        port     : 5433,
+        password : '123',
+        database : 'db_postgres',
+        charset  : 'utf8'
+    }
+});
 
-//console.log('SELECT * FROM USERS');
+var bookshelf = require('bookshelf')(knex);
 
-//client.query('INSERT INTO USERS (id, name) VALUES (1, \'HOLA MUNDO\')');
+var User = bookshelf.Model.extend({
+    tableName: 'users'
+});
 
-const query = client.query('SELECT * FROM USERS');
+//new User({id: '1', name: 'Hola mundo'}).save().then(function(model) {
+//    console.log('Saved!')
+//});
 
-query.on('row', function(row) {
-    console.log(row);
+new User().fetch().then(function(user) {
+    console.log(user);
+}).catch(function(err) {
+    console.error(err);
 });
