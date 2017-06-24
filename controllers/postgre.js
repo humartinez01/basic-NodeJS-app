@@ -2,7 +2,7 @@
  * Created by frosales on 23/06/2017.
  */
 
-var knex = require('knex')({
+const knex = require('knex')({
     client: 'pg',
     connection: {
         host     : 'localhost',
@@ -14,18 +14,20 @@ var knex = require('knex')({
     }
 });
 
-var bookshelf = require('bookshelf')(knex);
+const bookshelf = require('bookshelf')(knex);
 
 var User = bookshelf.Model.extend({
     tableName: 'users'
 });
 
-//new User({id: '1', name: 'Hola mundo'}).save().then(function(model) {
+//new User({name: 'Hola mundo'}).save().then(function(model) {
 //    console.log('Saved!')
 //});
 
-new User().fetch().then(function(user) {
-    console.log(user);
+new User().fetchAll().then(function(user) {
+    user.forEach(function (model) {
+        console.log(model.attributes.name)
+    })
 }).catch(function(err) {
     console.error(err);
 });
