@@ -20,9 +20,7 @@ var User = bookshelf.Model.extend({
     tableName: 'users'
 });
 
-//new User({name: 'Hola mundo'}).save().then(function(model) {
-//    console.log('Saved!')
-//});
+//new User({name: 'Fredwin Rosales', email: 'fredwinrosales@gmail.com'}).save().then(function(model) { console.log('Saved!') });
 
 new User().fetchAll().then(function(user) {
     user.forEach(function (model) {
@@ -31,3 +29,18 @@ new User().fetchAll().then(function(user) {
 }).catch(function(err) {
     console.error(err);
 });
+
+exports.test = function(callback) {
+
+    new User().fetchAll().then(function(user) {
+
+        callback(null, user)
+
+    }).catch(function(err) {
+
+        callback(err, null)
+
+    });
+
+
+};
