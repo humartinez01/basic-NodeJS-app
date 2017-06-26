@@ -1,33 +1,23 @@
 var express = require('express');
 var router = express.Router();
-var users = require('../controllers/postgre')
+var user = require('../controllers/user')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', user.index);
+
+router.get('/create', function(req, res) {
+  res.send('user.create');
 });
 
-router.get('/test', function(req, res, next) {
+router.post('/store', function(req, res) {
+  res.send('user.create');
+});
 
-  users.test(function(err, content) {
+router.get('/:id/edit', function(req, res) {
+  res.send('user.edit: ' + req.params.id);
+});
 
-    if(err) {
-
-      console.log(err);
-      res.render('index', { title: 'Express' });
-
-    } else {
-
-      content.forEach(function (model) {
-        console.log(model.attributes.name)
-      })
-
-      res.render('index', { title: 'Express', content: content });
-
-    }
-
-  });
-
+router.put('/:id/update', function(req, res) {
+  res.send('user.edit: ' + req.params.id);
 });
 
 module.exports = router;
