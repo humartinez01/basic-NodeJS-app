@@ -3,3 +3,12 @@ extends ../layout
 block content
   h1= title
   p Welcome to #{title}
+  form(method="POST")
+    div
+        span.label Name
+            input(type="text", name="name")
+    div
+        span.label E-mail
+            input(type="text", name="email")
+    div.actions
+        input(type="submit", value="add")
