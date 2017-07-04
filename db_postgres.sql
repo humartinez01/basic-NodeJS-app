@@ -19,7 +19,7 @@ CREATE TABLE public.users
 (
     id numeric NOT NULL DEFAULT nextval('seq_user_id'::regclass),
     name character(255) COLLATE pg_catalog."default",
-    email character(50) COLLATE pg_catalog."default",
+    email character(255) COLLATE pg_catalog."default",
     CONSTRAINT users_pkey PRIMARY KEY (id)
 )
 WITH (
